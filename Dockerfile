@@ -13,7 +13,6 @@ RUN mvn -f /Project/pom.xml clean package
 
 RUN mvn -f /Project/pom.xml install package
 
-
-From openjdk:11-jre-slim
-
-ENTRYPOINT["java","- jar","/Project/target/Docker-Spring-Boot-0.0.1-SNAPSHOT.jar"]
+From openjdk:11-jre-slim As Build
+Expose 9090
+ENTRYPOINT ["java","-jar","/Project/target/Docker-Spring-Boot-0.0.1-SNAPSHOT.jar"]
